@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <title>Base Q&A</title>
+     <style type="text/css">
+       .posts {
+         margin: 5%;
+         background-color: #bbeebb;       
+       }
+       .post {
+         margin: 2%;
+         background-color: #bbffbb;      
+       }
+     </style>
+  </head>
+  <body>
+    <div class="posts">
+          Posts here twice
+          {% for p in posts %}
+          <div class="post">
+            <p>{{ p.title }}</p>
+            <p>{{ p.author }}</p>
+            <p>{{ p.rating }}</p>
+            <p>{{ p.text }}</p>          
+          </div>
+          {% endfor %}
+    </div>
+    <br>
+    <div class="pages">
+      1 2 3 4 5 6 7 8 9 ...
+    </div>
+  </body>
+</html>

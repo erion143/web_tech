@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <title>Base Q&A</title>
+     <style type="text/css">
+       .posts {
+         margin: 5%;
+         background-color: #bbeebb;       
+       }
+       .post {
+         margin: 2%;
+         background-color: #bbffbb;      
+       }
+     </style>
+  </head>
+  <body>
+    <div class="posts">
+          <a href="/">Main</a> <a href="/popular/">Popular</a>
+          <p>{{ post.title }}</p>
+          <p>{{ post.text }}</p>
+    </div>
+    <div>
+          {% for a in answers %}            
+            <p>{{ a.test }}</p>
+          {% endfor %}
+    </div>
+    <br>
+    <nav><ul>
+    </ul></nav>
+  </body>
+</html>

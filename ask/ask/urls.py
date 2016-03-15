@@ -7,11 +7,11 @@ from django.contrib import admin
     # url(r'^blog/', include('blog.urls')),
 urlpatterns = patterns('',
                        #url(r'^admin/', include(admin.site.urls)),
-                       url(r'^$', 'qa.views.test'),
-                       url(r'^login/$', 'qa.views.test'),
-                       url(r'^singup/$', 'qa.views.test'),
-                       url(r'^question/[0-9]*/$', 'qa.views.test'),
-                       url(r'^ask/$', 'qa.views.test'),
-                       url(r'^popular/$', 'qa.views.test'),
-                       url(r'^new/$', 'qa.views.test')
+                       url(r'^$',
+                           'qa.views.base_pagin'),
+                       url(r'^popular\/$',
+                           'qa.views.base_popular'),
+                       url(r'^question\/(?P<slug>\d+)\/$',
+                           'qa.views.post_details')
                        )
+                       
