@@ -63,7 +63,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'qa',
         'USER': 'root',
-        #'PASSWORD': '54321'
+        'PASSWORD': '54321'
     }
 }
 

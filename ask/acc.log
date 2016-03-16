@@ -73,3 +73,8 @@
 127.0.0.1 - - [15/Mar/2016:20:52:39 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:45.0) Gecko/20100101 Firefox/45.0"
 127.0.0.1 - - [15/Mar/2016:20:52:42 +0000] "GET /question/10/ HTTP/1.1" 200 - "http://127.0.0.1:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:45.0) Gecko/20100101 Firefox/45.0"
 127.0.0.1 - - [15/Mar/2016:20:52:45 +0000] "GET / HTTP/1.1" 200 - "http://127.0.0.1:8000/question/10/" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:45.0) Gecko/20100101 Firefox/45.0"
+127.0.0.1 - - [16/Mar/2016:17:30:16 +0000] "GET / HTTP/1.1" 500 - "-" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:45.0) Gecko/20100101 Firefox/45.0"
+127.0.0.1 - - [16/Mar/2016:17:30:17 +0000] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:45.0) Gecko/20100101 Firefox/45.0"
+127.0.0.1 - - [16/Mar/2016:17:32:05 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:45.0) Gecko/20100101 Firefox/45.0"
+127.0.0.1 - - [16/Mar/2016:17:32:09 +0000] "GET /question/18 HTTP/1.1" 301 - "http://127.0.0.1:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:45.0) Gecko/20100101 Firefox/45.0"
+127.0.0.1 - - [16/Mar/2016:17:32:09 +0000] "GET /question/18/ HTTP/1.1" 500 - "http://127.0.0.1:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:45.0) Gecko/20100101 Firefox/45.0"

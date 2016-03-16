@@ -18,3 +18,5 @@ class Answer(models.Model):
     added_at = models.DateTimeField(default=django.utils.timezone.now)
     question = models.ForeignKey(Question)
     author = models.ForeignKey(User)
+    def __unicode__(self):
+        return self.text
