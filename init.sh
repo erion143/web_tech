@@ -1,6 +1,7 @@
-sudo ln -s /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
+WDIR=pwd
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s $WDIR/etc/nginx.conf  /etc/nginx/sites-enabled/test
 sudo /etc/init.d/nginx restart
-sudo ln -s /home/box/web/etc/gunicorn.conf   /etc/gunicorn.d/test
-sudo /etc/init.d/gunicorn restart
-sudo /etc/init.d/mysql restart
-sudo mysql -uroot -e 'CREATE TABLE qa'
+sudo bash $WDIR/gunicorn_start.sh
+
+
