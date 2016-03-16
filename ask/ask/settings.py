@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'autofixture',
+    #'autofixture',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -63,7 +63,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'qa',
         'USER': 'root',
-        'PASSWORD': '54321'
+        #'PASSWORD': '54321'
     }
 }
 
