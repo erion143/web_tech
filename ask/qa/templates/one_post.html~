@@ -28,8 +28,11 @@
     </div>
     <div>
           {% for a in answers %}            
-            <p>{{ a.text }}</p>
+            <p>{{ a.test }}</p>
           {% endfor %}
     </div>
+    <br>
+    <nav><ul>
+    </ul></nav>
   </body>
 </html>

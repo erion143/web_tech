@@ -13,5 +13,9 @@ urlpatterns = patterns('',
     url(r'^popular\/$',
         'qa.views.base_popular'),
     url(r'^question\/(?P<slug>\d+)\/$',
-        'qa.views.post_details')
+        'qa.views.post_details'),
+    url(r'^ask\/$',
+        'qa.views.add_action'),
+    url(r'^answer\/$',
+        'qa.views.add_answer'),
 )

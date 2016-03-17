@@ -19,8 +19,5 @@ def pagination(request, model, sorter=None, filters={}, baseurl='/?page='):
         page = paginator.num_pages
     paginator.baseurl = baseurl
     page = paginator.page(page)
-    return render(request, 'base_pagin.html',
-                  {'posts': page.object_list,
-                   'paginator': paginator,
-                   'page': page}
-                  )
+    return paginator, page
+    

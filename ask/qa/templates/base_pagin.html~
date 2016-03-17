@@ -15,7 +15,7 @@
   </head>
   <body>
     <div class="posts">
-          <a href="/">Main</a> <a href="/popular/">Popular</a> <a href="/ask/"> Add question </a>
+          <a href="/">Main</a> <a href="/popular/">Popular</a> <a href="/add/"> Add question </a>
           <p>Page {{ page.number }}</p>
           {% for p in posts %}
           <div class="post">

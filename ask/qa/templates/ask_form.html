@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ask your question</title>
+</head>
+<body>
+  <nav><a href="/">Main</a> <a href="/popular/">Popular</a></nav>
+  <form action="/ask/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p><input type="submit"></p>
+  </form>
+</body>
+</html>

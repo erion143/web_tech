@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.decorators.http import require_GET
+from django.views.decorators.http import require_GET, require_POST
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 from models import Question, Answer
 from pagination import pagination
+from forms import AskForm, AnswerForm
 
 def test(request, *args, **kwargs):
     return HttpResponse('OK')
@@ -18,20 +19,68 @@ def base(request, *args, **kwargs):
 
 @require_GET
 def base_pagin(request, *args, **kwargs):
-    return pagination(request, Question,
-                      sorter='-added_at')
+    form = AskForm()
+    paginator, page = pagination(request, Question,
+                                 sorter='-added_at')
+    return render(request, 'base_pagin.html',
+                  {'posts': page.object_list,
+                   'paginator': paginator,
+                   'page': page,
+                   'form':form}
+                  )
 
 @require_GET
 def base_popular(request, *args, **kwargs):
-    return pagination(request, Question,
-                      sorter='-rating',
-                      baseurl='/popular/?page=')
+    paginator, page =  pagination(request, Question,
+                                  sorter='-rating',
+                                  baseurl='/popular/?page=')
+    return render(request, 'base_pagin.html',
+                  {'posts': page.object_list,
+                   'paginator': paginator,
+                   'page': page})
 
 @require_GET
 def post_details(request, slug=0, *args, **kwargs):
-    post = get_object_or_404(Question, id=slug)
-    answers = Answer.objects.filter(question_id=post.id)
+    question = get_object_or_404(Question, id=slug)
+    answers = Answer.objects.filter(question_id=question.id)
+    form = AnswerForm(initial={'question': question.id})
     return render(request, 'one_post.html',
-                  {'post': post,
-                   'answers': answers[:]}
+                  {'post': question,
+                   'answers': answers[:],
+                   'form': form,}
                   )
+
+
+def add_action(request):
+    if request.method == 'POST':
+        return add_question(request)
+    else:
+        return add_question_field(request)
+
+@require_GET
+def add_question_field(request):
+    form = AskForm()
+    return render(request, 'ask_form.html',
+                  {'form': form})
+
+@require_POST
+def add_question(request):
+    form = AskForm(request.POST)
+    if form.is_valid():
+        question = form.save()
+        url = question.get_url()
+        return HttpResponseRedirect(url)
+    else:
+        return HttpResponseRedirect(r'/')
+
+@require_POST
+def add_answer(request):
+    form = AnswerForm(request.POST)
+    if form.is_valid:
+        answer = form.save()
+        url = answer.get_url()
+        return HttpResponseRedirect(url)
+    else:
+        pk = form.question
+        url = '/question/%s/' % pk
+        return HttpResponseRedirect(url)
