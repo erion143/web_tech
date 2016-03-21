@@ -39,8 +39,9 @@ def base_popular(request, *args, **kwargs):
                    'paginator': paginator,
                    'page': page})
 
-@require_GET
 def post_details(request, slug=0, *args, **kwargs):
+    if request.method == 'POST':
+        add_answer(request)
     question = get_object_or_404(Question, id=slug)
     answers = Answer.objects.filter(question_id=question.id)
     form = AnswerForm(initial={'question': question.id})
@@ -49,6 +50,9 @@ def post_details(request, slug=0, *args, **kwargs):
                    'answers': answers[:],
                    'form': form,}
                   )
+
+def test_action(request):
+    return HttpResponse(str(request.body))
 
 
 def add_action(request):
@@ -84,3 +88,4 @@ def add_answer(request):
         pk = form.question
         url = '/question/%s/' % pk
         return HttpResponseRedirect(url)
+
