@@ -79,13 +79,21 @@ def add_question(request):
 
 @require_POST
 def add_answer(request):
+    f = open('req.log', 'a')
     form = AnswerForm(request.POST)
+    f.write('form is created\n')
     if form.is_valid:
+        f.write('form is valid\n')
+        f.close()
         answer = form.save()
         url = answer.get_url()
+        f = open('req.log', 'a')
+        f.write('url = %s\n' % url)
+        f.close()
         return HttpResponseRedirect(url)
     else:
         pk = form.question
         url = '/question/%s/' % pk
+        f.close()
         return HttpResponseRedirect(url)
 

@@ -26,4 +26,8 @@ class Answer(models.Model):
         return self.text
 
     def get_url(self):
-        return '/question/%s/' % self.question_id 
+        f = open('req.log', 'a')
+        f.write('question_id = %s\n' % self.question_id)
+        f.close()
+        url = '/question/%s/' % self.question_id
+        return url
